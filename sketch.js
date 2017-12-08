@@ -1,9 +1,10 @@
 let circleArray = [];
-let arraySize = 100;
+let arraySize = 120;
 
 
 function setup() {
-  createCanvas(500, 500);
+  var canvas = createCanvas(594, 841);
+  canvas.parent("myContainer");
   for (let i=0; i<arraySize; i++){
     circleArray[i] = new Circle(width, height, random(-5, 5), random(-5, 5), random(10, 100));
   }
@@ -14,7 +15,6 @@ function draw() {
   for (let i=0; i<circleArray.length; i++){
     circleArray[i].moveFunction();
     circleArray[i].displayCircle();
-var size = random(200);
   }
 }
 
@@ -48,10 +48,13 @@ class Circle{
     this.fillcol = color(this.rd, this.grn, this.bl, this.a)
     strokeWeight(1);
     //noStroke();
-    fill(150, mouseX, mouseY);
-    line(this.x, this.y, this.size+15, this.size+15);
-    rect(this.x, this.y, this.size+5, this.size+5);
-    fill(mouseX, 150, mouseY)
+    fill(this.rd, mouseY, this.bl);
+    line(this.x, this.y, this.size+594, this.size+841);
+    line(this.y, this.x, this.size+594, this.size+841);
+    rect(this.x, this.y, this.size, this.size);
+    fill(this.rd, this.grn, mouseX)
     ellipse(this.y, this.x, this.size, this.size);
+    /*fill(mouseY, mouseX, 150);
+    triangle(this.y, this.x, this.y, this.x, this.y, this.x, this.size, this.size);*/
   }
 }
